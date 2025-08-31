@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FaBoxOpen, FaCalendarCheck, FaRocket } from "react-icons/fa";
 import { Box, Flex, Heading, Text, Button, VStack, SimpleGrid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 // Motion wrapper for animations
 const MotionBox = motion(Box);
 
@@ -13,9 +13,12 @@ export default function Home() {
 
       {/* Navigation */}
       <Flex as="nav" w="full" bg="white" shadow="md" py={4} px={6} justify="space-between" align="center" position="sticky" top="0" zIndex="50">
-        <Heading color="red.500" size="xl">
-          Smart Desk <Text as="span" color="gray.600" fontSize="lg">– Smart Business Manager</Text>
-        </Heading>
+        <Flex align="center" gap={3}>
+          <Link href="/app/home"><Image src="/logo.png" alt="Smart Desk Logo" width={50} height={50} /></Link>
+          <Heading color="red.500" size="xl">
+            Smart Desk <Text as="span" color="gray.600" fontSize="lg"></Text>
+          </Heading>
+        </Flex>
         <Flex gap={4}>
           <Link href="/signup"><Button colorScheme="purple">Sign Up</Button></Link>
           <Link href="/login"><Button variant="outline" colorScheme="blue">Login</Button></Link>
