@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: { turbo: false }, // disable Turbopack
+  reactStrictMode: true, // recommended
 };
 
 export default nextConfig;

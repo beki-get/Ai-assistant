@@ -32,6 +32,11 @@ const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
 
 export default function DashboardLayout({ children }) {
+   const bgColor = useColorModeValue("white", "gray.800");
+  const textColor = useColorModeValue("gray.900", "white");
+  const sidebarBg = useColorModeValue("gray.50", "gray.800");
+  const sidebarColor = useColorModeValue("gray.900", "white");
+
   const { user, logout } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [profileOpen, setProfileOpen] = useState(false);
@@ -89,8 +94,8 @@ export default function DashboardLayout({ children }) {
             as={Button}
             w="full"
             justifyContent="flex-start"
-            bg={useColorModeValue("gray.200", "gray.700")}
-            _hover={{ bg: useColorModeValue("gray.300", "gray.600") }}
+            bg={bgColor}
+            _hover={{ bg: textColor }}
           >
             <HStack>
               <Avatar size="sm" src={user.photoURL || undefined} name={user.displayName || "User"} />
@@ -111,16 +116,15 @@ export default function DashboardLayout({ children }) {
     </VStack>
   );
 
-const bg = useColorModeValue("white", "gray.800");
-const color = useColorModeValue("black", "white");
+
 
   return (
     <Flex h="100vh" overflow="hidden">
       {/* Sidebar (desktop) */}
       <Box
-        w="64"
-        bg={useColorModeValue("gray.50", "gray.800")}
-        color={useColorModeValue("gray.900", "white")}
+           w="64"
+        bg={sidebarBg}
+        color={sidebarColor}
         p={4}
         display={{ base: "none", md: "flex" }}
         flexDirection="column"
