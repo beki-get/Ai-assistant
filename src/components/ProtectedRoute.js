@@ -1,3 +1,4 @@
+//src/components/ProtectedRoute.js
 "use client";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -9,7 +10,7 @@ export default function ProtectedRoute({ children }) {
 
   useEffect(() => {
     if (!loading && !user) router.push("/login");
-  }, [user, loading]);
+  }, [user, loading, router]);
 
   if (loading || !user) return <p>Loading...</p>;
 
