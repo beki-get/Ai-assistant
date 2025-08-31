@@ -1,17 +1,16 @@
-// src/app/dashboard/orders/page.js
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react"; // Moved useCallback to single import
 import { db } from "@/lib/firebase";
 import { collection, query, where, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { useAuth } from "@/context/AuthContext";
 import { Box, Heading, VStack, Text, Button, Spinner } from "@chakra-ui/react";
-import { useCallback } from "react";
+
 export default function OrdersPage() {
   const { user } = useAuth();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchOrders = useCallback( async () => {
+  const fetchOrders = useCallback(async () => {
     if (!user) return;
     setLoading(true);
     try {
@@ -23,7 +22,7 @@ export default function OrdersPage() {
       console.error("Error fetching orders:", err);
     }
     setLoading(false);
-  }, [user]);
+  }, [user]); // ← FIXED: Added user as dependency
 
   const handleDelete = async (id) => {
     if (!confirm("Are you sure you want to delete this order?")) return;

@@ -1,4 +1,3 @@
-//src/app/dashboard/layout.js
 "use client";
 
 import Link from "next/link";
@@ -32,7 +31,7 @@ const MotionBox = motion(Box);
 const MotionFlex = motion(Flex);
 
 export default function DashboardLayout({ children }) {
-   const bgColor = useColorModeValue("white", "gray.800");
+  const bgColor = useColorModeValue("white", "gray.800");
   const textColor = useColorModeValue("gray.900", "white");
   const sidebarBg = useColorModeValue("gray.50", "gray.800");
   const sidebarColor = useColorModeValue("gray.900", "white");
@@ -46,7 +45,7 @@ export default function DashboardLayout({ children }) {
   };
 
   // Sidebar content reused for desktop + mobile drawer
-  const SidebarContent = ({ bgColor, textColor }) => (
+  const SidebarContent = () => ( // REMOVED: parameters bgColor, textColor
     <VStack align="start" spacing={6} h="100%" justify="space-between">
       <Box w="full">
         <Text fontSize="2xl" fontWeight="bold" mb={6}>
@@ -94,8 +93,8 @@ export default function DashboardLayout({ children }) {
             as={Button}
             w="full"
             justifyContent="flex-start"
-            bg={bgColor}
-            _hover={{ bg: textColor }}
+            bg={bgColor} // CHANGED: Use the bgColor from parent scope
+            _hover={{ bg: textColor }} // CHANGED: Use the textColor from parent scope
           >
             <HStack>
               <Avatar size="sm" src={user.photoURL || undefined} name={user.displayName || "User"} />
@@ -116,15 +115,13 @@ export default function DashboardLayout({ children }) {
     </VStack>
   );
 
-
-
   return (
     <Flex h="100vh" overflow="hidden">
       {/* Sidebar (desktop) */}
       <Box
-           w="64"
-        bg={sidebarBg}
-        color={sidebarColor}
+        w="64"
+        bg={sidebarBg} // Use the sidebarBg from parent scope
+        color={sidebarColor} // Use the sidebarColor from parent scope
         p={4}
         display={{ base: "none", md: "flex" }}
         flexDirection="column"
@@ -132,7 +129,7 @@ export default function DashboardLayout({ children }) {
         boxShadow="xl"
         zIndex={10}
       >
-        <SidebarContent />
+        <SidebarContent /> {/* REMOVED: parameters */}
       </Box>
 
       {/* Mobile Menu Button */}
@@ -153,7 +150,7 @@ export default function DashboardLayout({ children }) {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerBody>
-            <SidebarContent />
+            <SidebarContent /> {/* REMOVED: parameters */}
           </DrawerBody>
         </DrawerContent>
       </Drawer>

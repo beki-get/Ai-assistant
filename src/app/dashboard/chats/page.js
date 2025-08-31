@@ -1,3 +1,4 @@
+//src/app/dashboard/chats/page.js
 'use client'
 
 import React, { useEffect, useMemo, useState, useRef } from "react";
@@ -73,7 +74,7 @@ export default function DashboardChatsPage() {
             fallbackTime: m.time || "",
             source: "array",
           }))
-        : [];
+        : [selectedBusiness];
       setDocArrayMsgs(arr);
     });
 
