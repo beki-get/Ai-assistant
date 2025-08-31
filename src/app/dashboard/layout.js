@@ -46,7 +46,7 @@ export default function DashboardLayout({ children }) {
   };
 
   // Sidebar content reused for desktop + mobile drawer
-  const SidebarContent = () => (
+  const SidebarContent = ({ bgColor, textColor }) => (
     <VStack align="start" spacing={6} h="100%" justify="space-between">
       <Box w="full">
         <Text fontSize="2xl" fontWeight="bold" mb={6}>
