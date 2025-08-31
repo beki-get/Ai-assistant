@@ -37,7 +37,7 @@ export default function BookingsPage() {
 
   useEffect(() => {
     fetchBookings();
-  }, [user]);
+  }, [user,fetchBookings]);
 
   if (loading) return <Spinner size="xl" />;
 
