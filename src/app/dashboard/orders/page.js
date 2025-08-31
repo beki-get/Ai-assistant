@@ -37,7 +37,7 @@ export default function OrdersPage() {
 
   useEffect(() => {
     fetchOrders();
-  }, [user]);
+  }, [user,fetchOrders]);
 
   if (loading) return <Spinner size="xl" />;
 

@@ -1,3 +1,4 @@
+//src/app/dashboard/layout.js
 "use client";
 
 import Link from "next/link";
@@ -109,6 +110,9 @@ export default function DashboardLayout({ children }) {
       )}
     </VStack>
   );
+
+const bg = useColorModeValue("white", "gray.800");
+const color = useColorModeValue("black", "white");
 
   return (
     <Flex h="100vh" overflow="hidden">
